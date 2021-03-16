@@ -1,0 +1,120 @@
+---
+title: "tutorial"
+author: "Chirag Gupta"
+date: "April 20, 2020"
+output: html_document
+runtime: shiny
+---
+
+
+<style>
+div.text{ 
+	 
+	font-family: "Helvetica","Arial"; font-size: 15px;
+}
+img{
+	float:right;
+}
+.column{
+	float: left;
+	width: 50%;
+    border: 0px solid #F0F0F0;
+}
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+div.text{
+	margin-right:100px;
+	margin-left:100px;
+}
+
+</style>
+
+<div class = text>
+	<h2>Using GRAiN</h2><br><br>
+	<ol>
+		<b><li>Submitting your query genes</b>
+		<br>
+			<div class="row">	
+				<div class="column">	
+  					<img src="../data/images/upload_box.png" alt="upload box">
+				</div>
+				<div class="column">
+				Click on the 'Gene list upload' box and paste query genes in the text box
+				and hit submit. Input list should be prepared according to MSU annotations 
+				(LOC_OsXXgXXXXX). If the correct pattern is not found in the list, 
+				the input will be rejected. Each gene ID in the input can be separated 
+				by a commas(,) or semi-colons(;) or new lines. Best was is to copy and paste columns 
+				from excel sheets. For best results, start with fewer genes (10-100), as 
+				GRAiN will expand the list if no enrichment is found in the first go. 
+				If still no enrichment is found in the expanded gene set, try adding more
+				genes in the input.
+				<br><br>
+				<b>Sidenote</b>: If you have a large number of genes to query, try using a small input size first,
+				and check if the genes within enriched clusters are part of the original input set 
+				not used in the query. Remember to <b>referesh</b> the app before placing a new query. 
+				</div>
+			</div>
+		</li><br>
+		<b><li>Interpreting GRAiN results</b><br>
+			
+			<ol type="A"><br>
+				<li>
+					<b>Network Panel </b><br>
+					<div class="row">	
+  						<img src="../data/images/network.png" alt="upload box">
+					</div>	
+					<div class="row">
+						If the input is entered correctly, hitting submit button should display a network window. 
+						Depending upon your internet speed, the backend calculations should take between
+						7-12 seconds per query.  
+						Different node groups 
+						are colored differently in the resulting network. The red circles are the <b><i>query clusters</i></b>, 
+						clusters most significantly enriched in the input genes. Cluster nodes 
+						(red), Gene Ontology process terms (light blue) and Mapman pathways (dark blue) 
+						are connected to each other if the overlap between two sets was statistically 
+						significant based on hypergeometric tests <i>(qvalues < 0.05)</i>. 
+						Transcription Factors (grey) are connected to clusters (red) based on the 
+						Jaccard's Index of overlap between predicted targets of TFs and cluster genes.
+						TFs are connected to each other if the <i>mutual information scores</i> between their
+						network connectivity profiles were high. The network can be interacted with 
+						zoom buttons to display node names and view denser parts of the network using buttons 
+						below or scrolling.
+					</div><br><br>	
+				</li>
+				<li>
+					<b>Table Panel </b><br>
+					<div class="row">	
+  						<img src="../data/images/table.png" alt="upload box">
+					</div>	
+					<div class="row">
+						<br>
+						Hitting submit button should also display a table window. This table
+						displays all clusters that were found enriched in the input geneset
+						or their first order neighbors if no statistical significance was
+						found in the user input genes. The <b>Size</b> column shows total
+						number of genes in the cluster. The <b>Overlap</b> shows overlap between
+						inout genes and the cluster. The <b>adjusted pvalue</b> is the multiple
+						hypothesis corrected pvalue from hypergeometric test. The <b>GO process</b>
+						and <b>Mapman pathway</b> columns show over-represented biological 
+						processes and pathways in the cluster. The <b>CRE</b> column shows
+						<i>cis</i>-Regulatory Elements found in the cluster by <i>de novo</i>
+						analysis of DNA sequence motifs in 1000 bp promoters of cluster genes.
+						The <b>Top Regulators</b> column shows top 10 TFs predicted as regulators
+						of genes within the cluster.  
+					</div><br><br>	
+				</li>
+			</ol>
+	</ol>
+</div>
+
+
+
+
+
+  
+ 
+

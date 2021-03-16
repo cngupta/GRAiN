@@ -1,0 +1,88 @@
+---
+title: "about"
+author: "Chirag Gupta"
+date: "April 20, 2020"
+output: html_document
+	theme: united
+    highlight: tango
+runtime: shiny
+---
+
+<style>
+div.text{ 
+	
+	font-family: "Helvetica","Arial"; font-size: 15px;
+}
+img{
+	float:right;
+}
+.column{
+	float: left;
+	width: 50%;
+    border: 1.5px solid #F0F0F0;
+}
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+div.text{
+	margin-right:100px;
+	margin-left:100px;
+}
+</style>
+
+<div class = text>
+
+<h1><b>G</b>ene <b>R</b>egulation and <b>A</b>ssoc<b>i</b>ation <b>N</b>etwork of rice <br><br></h1>
+
+
+<h1>Introduction</h1>
+	<b>#GObeyondGO</b><br>
+
+Geneset enrichment analysis using annotation catalogs, such as the Gene Ontology, is the standard
+method for functional interpretation of genomic experiments
+(e.g. RNA-seq outputs, GWAS loci, QTL genes etc.). However, the current state of function annotations 
+of crop genomes is sparse and incomplete because the annotation protocols rely mainly
+on homology matches in model organisms. This also limits interpretation of genes that functionally
+evolved while retaining sequence and protein structure. Here, we developed the GRAiN framework to 
+facilitate the functional interpretation of genomic experiments
+using gene regulatory networks in rice. The GRAiN server allows users to analyze the functional and
+regulatory features for a set of genes of interest. Input gene-sets could be derived from 
+RNA-seq experiments as top differentially expressed genes, or GWAS SNPs mapped to genomic loci, 
+genes within QTL regions etc. 
+
+The GRAiN algorithm starts with finding overlaps of the input gene-set with network clusters, which were 
+predicted using a large collection of datasets profiling gene expression under abiotic-stress conditions in rice. 
+Then, all the clusters statistically over-represented in the input gene-set are retrieved, along with 
+the functional and regulatory annotations on the clusters. This information is displayed to the user as an 
+interconnected graph. This interactive graph is essentially 
+a network with clusters enriched in the input set, GO biological process and Mapman pathways enriched within
+the clusters, their potential transcriptional regulators, as well as cis-regulatory elements predicted in the promoters of
+cluster genes. Read the manuscript for details on how different node-types were linked to 
+each other. 
+<br><br>
+In case if an overlap between the input set of genes and network clusters is not found in the
+first try, the GRAiN algorithm expands the input set by using their first order neighbors in 
+the underlying unclustered gene co-regulatory network. The algorithm then proceeds with 
+overlap analysis as stated above. 
+<br><br>
+Alternatively, if there are no genes to input, users can simply parse pre-existing gene sets from the
+search box. In this case, no enrichment analysis is performed and only the network neighborhood is
+displayed.
+<br><br>
+Packages used: <br>
+Publication:
+
+<br><br>
+Data repo on Zenodo:
+
+<br><br>
+This app is developed using the <a href="https://shiny.rstudio.com/", target="_blank">Shiny </a>platform.
+
+
+</div>
+
+
+	
