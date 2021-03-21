@@ -92,6 +92,9 @@ UI=shinyUI(
                 		)
                 	),#end column
                 	column(9,id="netColumn",
+                		div(id="landingpagetbl",
+                			DT::dataTableOutput("TFDSmaintbl")
+                		),
                 		hidden(
                 			div(id="networks",
                 				visNetworkOutput("netplot", width = "100%", height = "250px")%>% withSpinner(color="black", type=6, size=1)

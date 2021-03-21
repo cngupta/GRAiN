@@ -16,6 +16,10 @@ library(shinyjs)
 
 #read data
 
+TF.tbl=read.table("../data/TF_DS.full.tbl", header=T, sep="\t")
+TF.tbl=TF.tbl[,c("TF","Rank","Drought_score","Description","Family","Label")]
+colnames(TF.tbl)=gsub("_"," ",colnames(TF.tbl))
+
 
 #MSU to RAP mappings
 rap.msu=read.table("../data/msu_rap_mapings", header=T)

@@ -14,6 +14,7 @@ server = function(input, output, session) {
     	shinyjs::hide(id ="selectPathnetworks")
     	shinyjs::show(id ="netColumn")
     	shinyjs::show(id = "download-btns")
+    	shinyjs::hide(id = "landingpagetbl")
 
     })
      
@@ -26,6 +27,8 @@ server = function(input, output, session) {
 		shinyjs::hide(id="download-btns")
 		shinyjs::hide(id="gsenrichtbl")
 		shinyjs::hide(id="demorestbl")
+		shinyjs::hide(id = "landingpagetbl")
+
 
     })
      
@@ -37,6 +40,7 @@ server = function(input, output, session) {
     	shinyjs::show(id = "download-btns")
     	shinyjs::hide(id = "SingleRegulon")
     	shinyjs::hide(id = "download-Regulon-btns")
+    	shinyjs::hide(id = "landingpagetbl")
     	genes=TextareaData()
     	qurygenesTbl=gene_annot[gene_annot$Gene %in% genes,]
 		message=paste("Total genes in input:",length(qurygenesTbl$Gene),sep=" ");
@@ -148,7 +152,9 @@ server = function(input, output, session) {
         }
       })
       
-  	
+  	output$TFDSmaintbl = renderDT(rownames=FALSE,escape = FALSE,class = "cell-border stripe",caption="Rice TFs ranked according to the predicted association to drought",{
+		TF.tbl
+	})
     
 	output$gsenrichtbl = renderDT(rownames=FALSE,escape = FALSE,class = "cell-border stripe",caption="Table 1: Clusters enriched in the query gene set",{
 		#showNotification("Calculating enrichment..",type="message",duration = 5)
